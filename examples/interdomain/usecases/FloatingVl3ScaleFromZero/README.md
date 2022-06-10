@@ -34,7 +34,7 @@ kubectl create ns ns-vl3-interdomain
 1.5 Register autoscale network service:
 
 ```bash
-kubectl apply -f ./autoscale-netsvc.yaml
+kubectl apply -f ./cluster1/autoscale-netsvc.yaml
 ```
 1.6 Start client and supplier
 
@@ -53,8 +53,8 @@ kubectl wait -n ns-vl3-interdomain --for=condition=ready --timeout=1m pod -l app
 ```bash
 export KUBECONFIG=$KUBECONFIG2
 kubectl create ns ns-vl3-interdomain
-kubectl apply -f ./autoscale-netsvc.yaml
-kubectl apply -k ./cluster1
+kubectl apply -f ./cluster2/autoscale-netsvc.yaml
+kubectl apply -k ./cluster2
 ```
 1.9 Wait for applications ready:
 ```bash
