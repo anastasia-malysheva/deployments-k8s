@@ -5,11 +5,12 @@ kind: Kustomization
 namespace: ns-vl3-interdomain
 
 resources:
-  - namespace.yaml
-  - autoscale-netsvc.yaml
+- namespace.yaml
+- autoscale-netsvc.yaml
 
 bases:
-- ../../../../../apps/nsc-kernel
+- https://github.com/networkservicemesh/deployments-k8s/apps/nsc-kernel?ref=7758662e8a91c411ed8740e9f76c3c921d87d321
+- https://github.com/networkservicemesh/deployments-k8s/apps/nse-supplier-k8s?ref=7758662e8a91c411ed8740e9f76c3c921d87d321
 
 patchesStrategicMerge:
 - nsc-patch.yaml

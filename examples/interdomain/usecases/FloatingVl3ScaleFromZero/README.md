@@ -26,37 +26,26 @@ kubectl apply -k ./cluster3
 ```bash
 export KUBECONFIG=$KUBECONFIG1
 ```
-1.4. Create test namespace
 
-```bash
-kubectl create ns ns-vl3-interdomain
-```
-1.5 Register autoscale network service:
-
-```bash
-kubectl apply -f ./cluster1/autoscale-netsvc.yaml
-```
-1.6 Start client and supplier
+1.4 Register autoscale network service, start client and supplier:
 
 ```bash
 kubectl apply -k ./cluster1
 ```
-1.7 Wait for applications ready:
+1.5 Wait for applications ready:
 ```bash
 kubectl wait -n ns-vl3-interdomain --for=condition=ready --timeout=1m pod -l app=nse-supplier-k8s
 kubectl wait -n ns-vl3-interdomain --for=condition=ready --timeout=1m pod -l app=nsc-kernel
 kubectl wait -n ns-vl3-interdomain --for=condition=ready --timeout=1m pod -l app=nse-vl3-vpp
 ```
 
-1.8 Switch context to the *cluster2* and start autoscale, supplier and client.
+1.6 Switch context to the *cluster2* and start autoscale, supplier and client.
 
 ```bash
 export KUBECONFIG=$KUBECONFIG2
-kubectl create ns ns-vl3-interdomain
-kubectl apply -f ./cluster2/autoscale-netsvc.yaml
 kubectl apply -k ./cluster2
 ```
-1.9 Wait for applications ready:
+1.7 Wait for applications ready:
 ```bash
 kubectl wait -n ns-vl3-interdomain --for=condition=ready --timeout=1m pod -l app=nse-supplier-k8s
 kubectl wait -n ns-vl3-interdomain --for=condition=ready --timeout=1m pod -l app=nsc-kernel
