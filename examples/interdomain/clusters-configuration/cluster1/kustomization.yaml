@@ -7,11 +7,11 @@ namespace: nsm-system
 bases:
 - ../../../../apps/nsmgr
 - ../../../../apps/forwarder-vpp
-- ../../../../apps/registry-memory
+- ../../../../apps/registry-k8s
 - ../../../../apps/registry-proxy-dns
 - ../../../../apps/nsmgr-proxy
 
 patchesStrategicMerge:
 - patch-nsmgr-proxy.yaml
 - patch-registry-proxy-dns.yaml
-- patch-registry-memory.yaml
+- patch-registry-k8s.yaml
